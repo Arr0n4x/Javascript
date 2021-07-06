@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenements</title>
+    <link rel="stylesheet" href="evenements.css">
+</head>
+<body>
+
+    <h1>Gestion de la souris</h1>
+
+
+    <button id="toggle-rectangle">Cacher / afficher le rectangle</button>
+
+    <div class="rectangle"></div>
+
+    <h2>Propagation d'evenements</h2>
+    <p id="para">Un paragraphe avec un <button id="propa">bouton</button>à l'intérieur</p>
+
+    <h2>Modifier le comportement par défaut en cas d'evenements</h2>
+    <p>Du temps à perdre <a href="https://9gag.com" id="interdit">Cliquez-ici</a></p>
+
+    <h2>Formulaire</h2>
+
+    <form action="" id="idForm2">
+        <p>
+            <label for="pseudo">Pseudo</label> :
+            <input type="text" name="pseudo" id="pseudo" required>
+            <span id="aidePseudo"></span>
+        </p>
+        <p>
+            <label for="mdp">Mot de passe</label> :
+            <input type="password" name="mdp" id="mdp" required>
+            <span id="aideMdp"></span>
+        </p>
+        <p>
+            <label for="courriel">Courriel</label> :
+            <input type="email" name="courriel" id="courriel" required placeholder="utilisateur@domaine.fr">
+            <span id="aideCourriel"></span>
+        </p>
+        <p>
+            <input type="checkbox" name="confirmation" id="confirmation">
+            <label for="confirmation" id="confirmationLabel">M'envoyer un courriel de confirmation</label>
+        </p>
+        <p>
+            <input type="radio" name="abonnement" id="abonewspromo" value="abonewspromo">
+            <label for="abonewspromo">M'abonner à la newsletter et aux promotions</label>
+            <br>
+            <input type="radio" name="abonnement" id="abonews" value="abonews">
+            <label for="abonews">M'abonner uniquement à la newsletter</label>
+            <br>
+            <input type="radio" name="abonnement" id="aborien" value="aborien" checked>
+            <label for="aborien">Ne pas m'abonner</label>
+            <br>
+        </p>
+        <p>
+            <label for="nationalite">Nationalité :</label>
+            <select name="nationalite" id="nationalite">
+                <option value="FR" selected>Française</option>
+                <option value="BE">Belge</option>
+                <option value="SUI">Suisse</option>
+                <option value="XX">Autre</option>
+            </select>
+        </p>
+        <input type="submit" value="Envoyer">
+        <input type="reset" value="Annuler">
+    </form>
+
+    <h3>Expressions régulières</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Motif</td>
+                <td>Correspondance si</td>
+                <td>test()=== true</td>
+                <td>test()=== false</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>abc</td>
+                <td>La chaîne contient "abc"</td>
+                <td>abc, abcdef, 123abc456</td>
+                <td>abdc, 1bca, adbc, ABC</td>
+            </tr>
+            <tr>
+                <td>[abc]</td>
+                <td>La chaîne contient soit "a", soit "b", soit "c"</td>
+                <td>abc, daef, bbb, 12c34</td>
+                <td>def, xyz, 123456, BBB</td>
+            </tr>
+            <tr>
+                <td>[a-z]</td>
+                <td>La chaîne contient n'importe quelle lettre minuscule de l'alphabet</td>
+                <td>abc, 12f43, _r_ </td>
+                <td>123, ABC, _-_</td>
+            </tr>
+            <tr>
+                <td>[0-9] ou \d</td>
+                <td>La chaîne contient un chiffre</td>
+                <td>123, ab4c, a56</td>
+                <td>abc</td>
+            </tr>
+            <tr>
+                <td>a.c</td>
+                <td>La chaîne contient "a" suivi d'un caractère (n'importe lequel) suivi de "c"</td>
+                <td>abc, acc, 12a.c34</td>
+                <td>ac, abbc, ABC</td>
+            </tr>
+            <tr>
+                <td>a\.c</td>
+                <td>La chaîne contient "a.c"</td>
+                <td>a.c, a.cdef, 12a.c34</td>
+                <td>ac, abc</td>
+            </tr>
+            <tr>
+                <td>a.+c</td>
+                <td>La chaîne contient "a" suivi d'un ou plusieurs caractères (n'importe lesquels) suivi de "c"</td>
+                <td>abc, abbc, 12a$ùc34</td>
+                <td>ac, bbc</td>
+            </tr>
+            <tr>
+                <td>a.*c</td>
+                <td>La chaîne contient "a" suivi de zéro ou plusieurs caractères (n'importe lesquels) suivi de "c"</td>
+                <td>abc, abbc, ac</td>
+                <td>ABC, bbc</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>Les crochets [] définissent un intervalle de caractères. Toute chaîne contenant au moins un caractère dans cet intervalle correspondra au motif. Les motifs [a-z] et[A-Z] permettent de rechercher n'importe quelle lettre de l'alphabet, respectivement en minuscules ou en majuscules.</li>
+        <li>Les motifs équivalents [0-9] et\d permettent de rechercher un chiffre. </li>
+        <li>Le caractère point . permet de remplacer n'importe quel caractère.</li>
+        <li>Le caractère \ ("antislash" ou "backslash") indique que le caractère qui suit doit être recherché en tant que tel. Par exemple,\. permet de rechercher le caractère .</li>
+        <li>Le caractère + permet de rechercher une ou plusieurs occurrences de l'expression qui le précède.</li>
+        <li>Le caractère * permet de rechercher zéro ou plusieurs occurrences de l'expression qui le précède.</li>
+    </ul>
+
+    <script src="evenements.js"></script>
+</body>
+</html> 

@@ -1,0 +1,8 @@
+#cadre{
+    border: 1px dotted teal;
+}
+#bloc{
+    width: 100px;
+    position: relative;
+    left: 0px;
+}
